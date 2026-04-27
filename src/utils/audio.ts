@@ -1,5 +1,8 @@
+let _ctx: AudioContext | null = null
+
 function getContext(): AudioContext {
-  return new AudioContext()
+  if (!_ctx || _ctx.state === 'closed') _ctx = new AudioContext()
+  return _ctx
 }
 
 export function playCycleEndSound(): void {

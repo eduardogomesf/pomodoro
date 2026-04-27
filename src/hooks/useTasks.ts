@@ -15,6 +15,7 @@ interface UseTasksReturn {
   markCycleDone: (id: string) => void
   addExtraCycle: (id: string) => void
   markTaskDone: (id: string) => void
+  resetProgress: (id: string) => void
   getProgress: (id: string) => TaskProgress | undefined
 }
 
@@ -116,7 +117,11 @@ export function useTasks(): UseTasksReturn {
     updateProgress(id, { status: 'done' })
   }, [updateProgress])
 
+  const resetProgress = useCallback((id: string) => {
+    updateProgress(id, { cyclesCompleted: 0, status: 'pending' })
+  }, [updateProgress])
+
   const getProgress = useCallback((id: string) => progress.find(p => p.taskId === id), [progress])
 
-  return { tasks, progress, addTask, updateTask, deleteTask, markCycleDone, addExtraCycle, markTaskDone, getProgress }
+  return { tasks, progress, addTask, updateTask, deleteTask, markCycleDone, addExtraCycle, markTaskDone, resetProgress, getProgress }
 }

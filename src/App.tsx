@@ -12,7 +12,7 @@ export default function App() {
   const {
     tasks, progress,
     addTask, updateTask, deleteTask,
-    markCycleDone, addExtraCycle, markTaskDone,
+    markCycleDone, addExtraCycle, markTaskDone, resetProgress,
     getProgress,
   } = useTasks()
 
@@ -84,7 +84,10 @@ export default function App() {
           onStart={timer.start}
           onStop={timer.stop}
           onResetTime={timer.resetTime}
-          onResetCycles={timer.resetCycles}
+          onResetCycles={() => {
+            timer.resetCycles()
+            if (activeTaskId) resetProgress(activeTaskId)
+          }}
           onStartBreak={timer.startBreak}
         />
 
