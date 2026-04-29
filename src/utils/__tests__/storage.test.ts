@@ -18,7 +18,7 @@ describe('loadData', () => {
       progress: [{ taskId: '1', cyclesCompleted: 2, status: 'pending' }],
       lastActiveDate: '2026-04-27',
     }
-    localStorage.setItem('pomodoro-data', JSON.stringify(stored))
+    localStorage.setItem('focus-helper-data', JSON.stringify(stored))
     expect(loadData()).toEqual(stored)
   })
 })
@@ -27,6 +27,6 @@ describe('saveData', () => {
   it('persists data to localStorage', () => {
     const data: StoredData = { tasks: [], progress: [], lastActiveDate: '2026-04-27' }
     saveData(data)
-    expect(localStorage.getItem('pomodoro-data')).toBe(JSON.stringify(data))
+    expect(localStorage.getItem('focus-helper-data')).toBe(JSON.stringify(data))
   })
 })

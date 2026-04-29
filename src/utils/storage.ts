@@ -1,6 +1,6 @@
 import type { StoredData } from '../types'
 
-const KEY = 'pomodoro-data'
+const KEY = 'focus-helper-data'
 
 const DEFAULT: StoredData = {
   tasks: [],

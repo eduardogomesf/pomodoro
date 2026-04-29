@@ -45,7 +45,7 @@ describe('useTasks', () => {
       progress: [{ taskId: '1', cyclesCompleted: 3, status: 'done' }],
       lastActiveDate: '2026-04-26',
     }
-    localStorage.setItem('pomodoro-data', JSON.stringify(stored))
+    localStorage.setItem('focus-helper-data', JSON.stringify(stored))
     const { result } = renderHook(() => useTasks())
     expect(result.current.progress[0].cyclesCompleted).toBe(0)
     expect(result.current.progress[0].status).toBe('pending')
@@ -57,7 +57,7 @@ describe('useTasks', () => {
       progress: [{ taskId: '1', cyclesCompleted: 3, status: 'pending' as const }],
       lastActiveDate: '2026-04-27',
     }
-    localStorage.setItem('pomodoro-data', JSON.stringify(stored))
+    localStorage.setItem('focus-helper-data', JSON.stringify(stored))
     const { result } = renderHook(() => useTasks())
     expect(result.current.progress[0].cyclesCompleted).toBe(3)
   })
